@@ -46,4 +46,40 @@ function upMove () {
 
 function downMove () {
 	console.log('down');
+    var testRow = [];
+    for(var i = GRID_SIZE - 1; i > 0; i--){
+        testRow.push(table[0][i]);
+    }
+    console.log(slide(testRow));
+}
+
+// Slides tiles to the left
+function slide (row) {
+	//for(var index = 0; index < GRID_SIZE; index++){
+        //var row = rows[index];
+        // Steps through the row 
+        for(var i = 0; i < GRID_SIZE; i++){
+            // Checks consecutive spots for swap condidates
+            for(var j = i + 1; j < GRID_SIZE; j++){
+                // Case: empty followed by non-empty
+                if(row[i].value == null && row[j] != null){
+                    // swaps values
+                    row[i].value = row[j].value;
+                    row[j].reset();
+                    break;
+                }
+                // Case: combine
+                else if (row[i].value == row[j].value){
+                    row[i].incrementValue();
+                    row[j].reset();
+                    break;
+                }
+            }
+            console.log(row);
+        }   
+	//}
+    return row;
+}
+function setTile(coord, value){
+    table[coord[0]][coord[1]].setValue(value);
 }

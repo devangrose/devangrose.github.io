@@ -8,12 +8,22 @@ class Tile {
     this.elem = element;
     this.coordinate = coordinate;
     }
+	// Doubles the value of the Tile 
     incrementValue () {
         this.value = this.value * 2;
         this.elem.innerHTML = this.value;
     }
-	kill () {
+
+	// Resets the value to blank state
+	reset () {
 		this.value = null;
 		this.elem.innerHTML = '';
 	}
+    setValue(val){
+        this.value = val;
+        this.elem.innerHTML = val;
+    }
 }
+
+
+var pika = new Pokemon (100, [moves['tackle'],moves['thundershock']],img);
