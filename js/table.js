@@ -74,7 +74,7 @@ function upMove () {
     }
     // prevents adding new tile if board hasn't changed
     if(slide(rows)){
-        addtile();
+        addTile();
     }
 }
 
