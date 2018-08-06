@@ -25,5 +25,6 @@ class Tile {
     }
 }
 
-
-var pika = new Pokemon (100, [moves['tackle'],moves['thundershock']],img);
+Tile.prototype.toString = function tileToString (){
+    return this.value;
+};
