@@ -36,9 +36,6 @@ function init (){
     // Add two random tiles
     addTile();
     addTile();
-    setTile([0,0],2);
-    setTile([0,1],2);
-    setTile([0,2],2);
 }
 
 $(document).ready(function(){
