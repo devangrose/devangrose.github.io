@@ -1,6 +1,7 @@
 var GRID_SIZE = 4;
 var table = [];
 var FOUR_CHANCE = 0.15;
+var score = 0;
 
 class Tile {
     constructor (element, value, coordinate) {
@@ -13,7 +14,6 @@ class Tile {
         this.value = this.value * 2;
         this.elem.innerHTML = this.value;
     }
-
 	// Resets the value to blank state
 	reset () {
 		this.value = null;

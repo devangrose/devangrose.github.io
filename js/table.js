@@ -46,6 +46,9 @@ function leftMove () {
     if(slide(rows)){
         addTile();
     }
+    if(checkForEndGame()){
+        lose();
+    }
 }
 
 function rightMove () {
@@ -60,6 +63,9 @@ function rightMove () {
     // prevents adding new tile if board hasn't changed
     if(slide(rows)){
         addTile();
+    }
+    if(checkForEndGame()){
+        lose();
     }
 }
 
@@ -76,6 +82,9 @@ function upMove () {
     if(slide(rows)){
         addTile();
     }
+    if(checkForEndGame()){
+        lose();
+    }
 }
 
 function downMove () {
@@ -90,6 +99,9 @@ function downMove () {
     // Prevents adding new tile if board hasn't changed
     if(slide(rows)){
         addTile();
+    }
+    if(checkForEndGame()){
+        lose();
     }
 }
 function slide(rows){
@@ -136,5 +148,37 @@ function setTile(coord, value){
 }
 
 function checkForEndGame(){
-    
+   for(let i = 0; i < GRID_SIZE; i++){
+        for(let j = 0; j < GRID_SIZE; j++){
+            if(table[i][j].value == null){
+                return false;
+            }
+            let neighbors = getNeighbors(table[i][j].coordinate);
+            for(let k = 0; k < neighbors.length; k++){
+                if(neighbors[k].value == table[i][j].value)
+                    return false;
+            }
+        }
+   }
+    return true;
+}
+function getNeighbors(coord){
+    let toReturn = [];
+    if(coord[0] >= 1){
+        toReturn.push(table[coord[0] - 1][coord[1]]);
+    }
+    if(coord[0] < GRID_SIZE - 1){
+        toReturn.push(table[coord[0] + 1][coord[1]]);
+    }
+    if(coord[1] >= 1){
+        toReturn.push(table[coord[0]][coord[1] - 1]);
+    }
+    if(coord[1] < GRID_SIZE - 1){
+        toReturn.push(table[coord[0]][coord[1] + 1]);
+    }
+    return toReturn;
+}
+
+function lose(){
+    alert('You suck!');
 }

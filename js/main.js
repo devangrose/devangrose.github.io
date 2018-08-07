@@ -14,7 +14,6 @@ function init (){
         $('#table').append(row);
         table.push(rowjs);
     }
-
     // Set event listeners
     document.onkeydown = function(e) {
 		switch (e.keyCode) {
@@ -32,12 +31,10 @@ function init (){
 				break;
 		}
 	};
-
     // Add two random tiles
     addTile();
     addTile();
 }
-
 $(document).ready(function(){
     init();
 });
