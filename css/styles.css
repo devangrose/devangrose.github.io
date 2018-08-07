@@ -1,5 +1,11 @@
 td {
-    border: 1px solid black;
-    width: 100px;
+    font-size:30px;
+	color: rgb(228, 228, 228);
+	background-color: #7CB5E2;
+	box-shadow: 5px 5px 1px 7px #fff;
+	border: 5px white solid;
+	border-radius: 5px;
     height: 100px;
+    width: 100px;
+
 }
