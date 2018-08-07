@@ -13,6 +13,7 @@ class Tile {
     incrementValue () {
         this.value = this.value * 2;
         this.elem.innerHTML = this.value;
+        updateScore(this.value);
     }
 	// Resets the value to blank state
 	reset () {

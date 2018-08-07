@@ -104,6 +104,7 @@ function downMove () {
         lose();
     }
 }
+
 function slide(rows){
     var hasChanged = false;
     for(let index = 0; index < rows.length; index++){
@@ -114,7 +115,6 @@ function slide(rows){
                 let j = i + 1;
                 // Gets next nonempty element in row
                 while(j < row.length && row[j].value == null){
-                    console.log(row[j].value);
                     j++;
                 }
                 if(j < row.length && row[i].value == row[j].value){
@@ -143,6 +143,7 @@ function slide(rows){
     }
     return hasChanged;
 }
+
 function setTile(coord, value){
     table[coord[0]][coord[1]].setValue(value);
 }
@@ -162,6 +163,7 @@ function checkForEndGame(){
    }
     return true;
 }
+
 function getNeighbors(coord){
     let toReturn = [];
     if(coord[0] >= 1){
@@ -177,6 +179,14 @@ function getNeighbors(coord){
         toReturn.push(table[coord[0]][coord[1] + 1]);
     }
     return toReturn;
+}
+
+function updateScore(val){
+    var score = $('#score').text();
+    score = parseInt(score);
+    score += val;
+    console.log(score);
+    $('#score').text(score);
 }
 
 function lose(){
