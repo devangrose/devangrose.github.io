@@ -187,6 +187,10 @@ function updateScore(val){
     score += val;
     console.log(score);
     $('#score').text(score);
+    if(score > localStorage.score){
+        localStorage.score = score;
+        $('#high-score').text(score);
+    }
 }
 
 function lose(){

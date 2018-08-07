@@ -34,6 +34,9 @@ function init (){
     // Add two random tiles
     addTile();
     addTile();
+
+    // Pulls high score from localStorage
+    $('#high-score').text(localStorage.score);
 }
 $(document).ready(function(){
     init();
