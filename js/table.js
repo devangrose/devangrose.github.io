@@ -191,4 +191,5 @@ function updateScore(val){
 
 function lose(){
     alert('You suck!');
+    document.onkeydown = null;
 }
