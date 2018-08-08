@@ -12,17 +12,17 @@ class Tile {
 	// Doubles the value of the Tile 
     incrementValue () {
         this.value = this.value * 2;
-        this.elem.innerHTML = this.value;
+        this.elem.childNodes[0].innerHTML = this.value;
         updateScore(this.value);
     }
 	// Resets the value to blank state
 	reset () {
 		this.value = null;
-		this.elem.innerHTML = '';
+		this.elem.childNodes[0].innerHTML = ' ';
 	}
     setValue(val){
         this.value = val;
-        this.elem.innerHTML = val;
+        this.elem.childNodes[0].innerHTML = val;
     }
 }
 

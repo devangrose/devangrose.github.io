@@ -30,7 +30,8 @@ function getRandomTile (emptyTiles) {
 // and updates the DOM
 function newTile (tile, value) {
     tile.value = value;
-    tile.elem.innerHTML = value;
+    console.log(tile.coordinate);
+    tile.elem.childNodes[0].innerHTML=value;
 }
 
 function leftMove () {

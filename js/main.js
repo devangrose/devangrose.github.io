@@ -6,6 +6,8 @@ function init (){
         let rowjs = [];
         for(let j = 0; j < GRID_SIZE; j++){
             let newTile = document.createElement('td');
+            let newDiv = document.createElement('div');
+            newTile.appendChild(newDiv);
             let tile = new Tile(newTile,null,[i,j]);
             newTile.id = i + ',' + j;
             rowjs.push(tile);
