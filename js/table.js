@@ -197,3 +197,15 @@ function lose(){
     alert('You suck!');
     document.onkeydown = null;
 }
+
+function clearTable(){
+    /*
+    for(let i = 0; i < GRID_SIZE; i++){
+        for(let j = 0; j < GRID_SIZE; j++){
+            table[i][j].elem.remove();
+        }
+    }
+    */
+    table = [];
+    $('tr').remove();
+}

@@ -37,7 +37,16 @@ function init (){
 
     // Pulls high score from localStorage
     $('#high-score').text(localStorage.score);
+
+    // Add listener to change size
+    $('#change-size').on('click',function () {
+        clearTable();
+        GRID_SIZE = parseInt($('#new-size').val());
+        console.log('Grid size:',GRID_SIZE);
+        init();
+    });
 }
+
 $(document).ready(function(){
     init();
 });

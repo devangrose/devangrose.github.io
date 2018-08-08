@@ -12,3 +12,8 @@ body {
     text-align: center;
     margin-top: 50px;
 }
+#new-size {
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+}
