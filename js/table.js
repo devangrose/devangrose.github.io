@@ -3,7 +3,7 @@ function addTile () {
     let empty = getEmptySpaces();
     let randomTile = getRandomTile(empty);
     let tileValue = 
-    newTile(randomTile, Math.random() > FOUR_CHANCE ? 2 : 4);
+    randomTile.setValue(Math.random() > FOUR_CHANCE ? 2 : 4);
     checkForEndGame();
 }
 
@@ -30,8 +30,9 @@ function getRandomTile (emptyTiles) {
 // and updates the DOM
 function newTile (tile, value) {
     tile.value = value;
-    console.log(tile.coordinate);
     tile.elem.childNodes[0].innerHTML=value;
+    tile.height = value / 2;
+    
 }
 
 function leftMove () {
@@ -133,7 +134,7 @@ function slide(rows){
             if(row[i].value == null){
                 for(let j = i; j < row.length; j++){
                     if(row[j].value != null){
-                        row[i].setValue(row[j].value);
+                        row[i].setValue(row[j].value, row[j].height);
                         row[j].reset();
                         hasChanged = true;
                         break;
@@ -146,7 +147,7 @@ function slide(rows){
 }
 
 function setTile(coord, value){
-    table[coord[0]][coord[1]].setValue(value);
+    table[coord[0]][coord[1]].setValue(value,1);
 }
 
 function checkForEndGame(){
@@ -186,7 +187,6 @@ function updateScore(val){
     var score = $('#score').text();
     score = parseInt(score);
     score += val;
-    console.log(score);
     $('#score').text(score);
     if(score > localStorage.score){
         localStorage.score = score;

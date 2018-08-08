@@ -7,9 +7,10 @@ function init (){
         for(let j = 0; j < GRID_SIZE; j++){
             let newTile = document.createElement('td');
             let newDiv = document.createElement('div');
+            newDiv.className = "tile";
             newTile.appendChild(newDiv);
             let tile = new Tile(newTile,null,[i,j]);
-            newTile.id = i + ',' + j;
+            newDiv.id = i + ',' + j;
             rowjs.push(tile);
             row.append(newTile);
         }
@@ -20,15 +21,19 @@ function init (){
     document.onkeydown = function(e) {
 		switch (e.keyCode) {
 			case 37:
+                e.preventDefault();
 				leftMove();
 				break;
 			case 38:
+                e.preventDefault();
 				upMove();
 				break;
 			case 39:
+                e.preventDefault();
 				rightMove();
 				break;
 			case 40:
+                e.preventDefault();
 				downMove();
 				break;
 		}
