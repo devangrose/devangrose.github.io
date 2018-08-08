@@ -68,6 +68,7 @@ function init (){
     });
     // Disables loading message
 	$( document ).on( "mobileinit", function() {
+        $.mobile.loadingMessage = false;
 		$.mobile.hidePageLoadingMsg();
 	});
 }
