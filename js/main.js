@@ -52,6 +52,24 @@ function init (){
         console.log('Grid size:',GRID_SIZE);
         init();
     });
+
+    // Mobile listeners
+    $('body').on('swipeleft',function(){
+        leftMove();
+    });
+    $('body').on('swiperight',function(){
+        rightMove();
+    });
+    $('body').on('swipeup',function(){
+        upMove();
+    });
+    $('body').on('swipedown',function(){
+        downMove();
+    });
+    // Disables loading message
+	$( document ).on( "mobileinit", function() {
+		$.mobile.hidePageLoadingMsg();
+	});
 }
 
 $(document).ready(function(){

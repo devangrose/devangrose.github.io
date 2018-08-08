@@ -28,3 +28,6 @@ body {
 table {
     margin: 50px auto;
 }
+.ui-loader {
+	display: none;
+}
