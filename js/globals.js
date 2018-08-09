@@ -2,6 +2,8 @@ var GRID_SIZE = 4;
 var table = [];
 var FOUR_CHANCE = 0.15;
 var score = 0;
+var hasWon = false;
+var FADE_SPEED = 300;
 
 var CLASSES = [
     'tile grey lighten-5',
@@ -36,6 +38,10 @@ class Tile {
         this.elem.childNodes[0].innerHTML = this.value;
         */
         this.setDiv(CLASSES[this.height]);
+        if(this.value == 2048 && !hasWon){
+            hasWon = true;
+            winGame();
+        }
     }
 	// Resets the value to blank state
 	reset () {

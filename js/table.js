@@ -196,11 +196,6 @@ function updateScore(val){
     }
 }
 
-function lose(){
-    alert('You suck!');
-    document.onkeydown = null;
-}
-
 function clearTable(){
     table = [];
     $('tr').remove();
