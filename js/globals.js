@@ -16,7 +16,7 @@ var CLASSES = [
     'tile orange darken-3',
     'tile orange darken-4',
     'tile orange darken-5',
-    
+    'tile grey darken-5 white-text',
 ];
 
 class Tile {
@@ -29,28 +29,47 @@ class Tile {
 	// Doubles the value of the Tile 
     incrementValue () {
         this.value = this.value * 2;
-        this.elem.childNodes[0].innerHTML = this.value;
         updateScore(this.value);
         this.height++;
+        /*
         this.elem.childNodes[0].className = CLASSES[this.height];
+        this.elem.childNodes[0].innerHTML = this.value;
+        */
+        this.setDiv(CLASSES[this.height]);
     }
 	// Resets the value to blank state
 	reset () {
 		this.value = null;
         this.height = 0;
+        /*
 		this.elem.childNodes[0].innerHTML = ' ';
         this.elem.childNodes[0].className = 'tile';
+        */
+        this.setDiv('tile');  
 	}
     setValue(val){
         this.value = val;
-        this.elem.childNodes[0].innerHTML = val;
         var h = 0;
         while(val > 2){
             h++;
             val /=2;
         }
         this.height = h;
+        /*
+        this.elem.childNodes[0].innerHTML = val;
         this.elem.childNodes[0].className = CLASSES[this.height];
+        */
+        this.setDiv(CLASSES[this.height]);
+    }
+    setDiv(className){
+        console.log('setDiv');  
+        if(this.height <= 10){
+            this.elem.childNodes[0].className = className;
+        }
+        else {
+            this.elem.childNodes[0].className = CLASSES[12];
+        }
+        this.elem.childNodes[0].innerHTML = this.value;
     }
 }
 

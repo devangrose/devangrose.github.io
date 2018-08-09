@@ -42,6 +42,10 @@ function init (){
     addTile();
     addTile();
 
+	if(!localStorage.score){
+		localStorage.score = 0;
+	}
+
     // Pulls high score from localStorage
     $('#high-score').text(localStorage.score);
 

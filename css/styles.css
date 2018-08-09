@@ -1,10 +1,11 @@
 td {
-    font-size:20px;
+    font-family: 'Fjalla One', sans-serif;
+    font-size:30px;
+    font-weight: bold;
 	color: rgb(228, 228, 228);
-	background-color: #7CB5E2;
 	box-shadow: 5px 5px 1px 7px #fff;
 	border: 5px grey solid;
-	border-radius: 5px;
+	border-radius: 8px;
     height: 120px;
     width: 120px;
     padding: 0;
@@ -12,6 +13,8 @@ td {
 body {
     text-align: center;
     margin-top: 50px;
+    overscroll-behavior: contain;
+
 }
 #new-size {
     width: 100px;
@@ -24,9 +27,12 @@ body {
     background-color: white;
     color: black;
     line-height: 120px;
+	border-radius: 8px;
 }
 table {
     margin: 50px auto;
+	background-color: grey;
+	border-radius: 8px;
 }
 .ui-loader {
 	display: none;
