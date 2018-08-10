@@ -4,7 +4,7 @@ td {
 	color: rgb(228, 228, 228);
 	box-shadow: 5px 5px 1px 7px #fff;
 	border: 5px grey solid;
-	border-radius: 8px;
+	background-color: grey;
     height: 120px;
     width: 120px;
     padding: 0;
@@ -27,12 +27,10 @@ body {
     background-color: white;
     color: black;
     line-height: 120px;
-	border-radius: 8px;
 }
 table {
     margin: 50px auto;
 	background-color: grey;
-	border-radius: 8px;
 }
 .padding {
     padding-bottom: 30px;

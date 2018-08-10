@@ -90,6 +90,7 @@ function postMove(rows){
     if(checkForEndGame()){
         lose();
     }
+    saveTable();
 }
 
 function slide(rows){
@@ -184,5 +185,38 @@ function clearTable(){
     $('tr').remove();
 }
 function saveTable(){
-    localStorage.setItem('table',table);
+    localTable = [];
+    for(var i = 0; i < GRID_SIZE; i++){
+        for(var j = 0; j < GRID_SIZE; j++){
+            localTable.push(table[i][j].value);
+        }
+    }   
+    localStorage.setItem('table',localTable);
+}
+function showTable(){
+    for(var i = 0; i < localStorage.table.length; i++){
+        console.log(localStorage.table[i]);
+    }
+}
+function loadTable(){
+    clearTable();
+    localTable = localStorage.getItem('table');
+    console.log(localTable.length);
+    for(let i = 0; i < localTable.length; i++){
+        let row = document.createElement('tr');
+        row.id = 'row-' + i;
+        let rowjs = [];
+        for(let j = 0; j < localTable.length; j++){
+            let newTile = document.createElement('td');
+            let newDiv = document.createElement('div');
+            newDiv.className = "tile";
+            newTile.appendChild(newDiv);
+            let tile = new Tile(newTile,localTable[i][j],[i,j]);
+            newDiv.id = i + ',' + j;
+            rowjs.push(tile);
+            row.append(newTile);
+        }
+        $('#table').append(row);
+        table.push(rowjs);
+    }
 }
