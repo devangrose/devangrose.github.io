@@ -44,13 +44,7 @@ function leftMove () {
         }
         rows.push(testRow);
     }
-    // prevents adding new tile if board hasn't changed
-    if(slide(rows)){
-        addTile();
-    }
-    if(checkForEndGame()){
-        lose();
-    }
+    postMove(rows);
 }
 
 function rightMove () {
@@ -62,13 +56,7 @@ function rightMove () {
         }
         rows.push(testRow);
     }
-    // prevents adding new tile if board hasn't changed
-    if(slide(rows)){
-        addTile();
-    }
-    if(checkForEndGame()){
-        lose();
-    }
+    postMove(rows);
 }
 
 function upMove () {
@@ -80,13 +68,7 @@ function upMove () {
         }
         rows.push(testRow);
     }
-    // prevents adding new tile if board hasn't changed
-    if(slide(rows)){
-        addTile();
-    }
-    if(checkForEndGame()){
-        lose();
-    }
+    postMove(rows);
 }
 
 function downMove () {
@@ -98,6 +80,9 @@ function downMove () {
         }
         rows.push(testRow);
     }
+    postMove(rows);
+}
+function postMove(rows){
     // Prevents adding new tile if board hasn't changed
     if(slide(rows)){
         addTile();
@@ -197,4 +182,7 @@ function updateScore(val){
 function clearTable(){
     table = [];
     $('tr').remove();
+}
+function saveTable(){
+    localStorage.setItem('table',table);
 }
