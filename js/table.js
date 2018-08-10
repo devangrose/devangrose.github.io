@@ -187,9 +187,7 @@ function updateScore(val){
     var score = $('#score').text();
     score = parseInt(score);
     score += val;
-	console.log(score);
     $('#score').text(score);
-	console.log(localStorage.score);
     if(score > localStorage.score){
         localStorage.setItem('score', score.toString());
         $('#high-score').text(score);

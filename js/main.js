@@ -1,25 +1,6 @@
 function init (){
-    // Generate table and add it to DOM
-    for(let i = 0; i < GRID_SIZE; i++){
-        let row = document.createElement('tr');
-        row.id = 'row-' + i;
-        let rowjs = [];
-        for(let j = 0; j < GRID_SIZE; j++){
-            let newTile = document.createElement('td');
-            let newDiv = document.createElement('div');
-            newDiv.className = "tile";
-            newTile.appendChild(newDiv);
-            let tile = new Tile(newTile,null,[i,j]);
-            newDiv.id = i + ',' + j;
-            rowjs.push(tile);
-            row.append(newTile);
-        }
-        $('#table').append(row);
-        table.push(rowjs);
-    }
-    // Add two random tiles
-    addTile();
-    addTile();
+    // Initializes table state
+    initTable();
 
     // Initializes first high score
 	if(!localStorage.score){
@@ -33,15 +14,13 @@ function init (){
     $('#change-size').on('click',function () {
         clearTable();
         GRID_SIZE = parseInt($('#new-size').val());
-        console.log('Grid size:',GRID_SIZE);
-        init();
+        if($('#initial-board').is(':hidden')){
+            $('#tableElement').show();
+        }
+        $('#score').text('0');
+        initTable();
     });
 
-    // Disables jQuery mobile loading message
-	$( document ).on( "mobileinit", function() {
-        $.mobile.loadingMessage = false;
-		$.mobile.hidePageLoadingMsg();
-	});
 
     // Initial state
     $('#tableElement').hide();
@@ -64,6 +43,33 @@ function init (){
         }); 
         setListeners();
     }); 
+
+    // Disables jQuery mobile loading message
+    $(".ui-loader").hide();
+
+}
+function initTable(){
+    // Generate table and add it to DOM
+    for(let i = 0; i < GRID_SIZE; i++){
+        let row = document.createElement('tr');
+        row.id = 'row-' + i;
+        let rowjs = [];
+        for(let j = 0; j < GRID_SIZE; j++){
+            let newTile = document.createElement('td');
+            let newDiv = document.createElement('div');
+            newDiv.className = "tile";
+            newTile.appendChild(newDiv);
+            let tile = new Tile(newTile,null,[i,j]);
+            newDiv.id = i + ',' + j;
+            rowjs.push(tile);
+            row.append(newTile);
+        }
+        $('#table').append(row);
+        table.push(rowjs);
+    }
+    // Add two random tiles
+    addTile();
+    addTile();
 }
 function lose(){
     sendMessage('You lose!');

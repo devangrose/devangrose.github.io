@@ -33,10 +33,6 @@ class Tile {
         this.value = this.value * 2;
         updateScore(this.value);
         this.height++;
-        /*
-        this.elem.childNodes[0].className = CLASSES[this.height];
-        this.elem.childNodes[0].innerHTML = this.value;
-        */
         this.setDiv(CLASSES[this.height]);
         if(this.value == 2048 && !hasWon){
             hasWon = true;
@@ -47,10 +43,6 @@ class Tile {
 	reset () {
 		this.value = null;
         this.height = 0;
-        /*
-		this.elem.childNodes[0].innerHTML = ' ';
-        this.elem.childNodes[0].className = 'tile';
-        */
         this.setDiv('tile');  
 	}
     setValue(val){
@@ -61,14 +53,9 @@ class Tile {
             val /=2;
         }
         this.height = h;
-        /*
-        this.elem.childNodes[0].innerHTML = val;
-        this.elem.childNodes[0].className = CLASSES[this.height];
-        */
         this.setDiv(CLASSES[this.height]);
     }
     setDiv(className){
-        console.log('setDiv');  
         if(this.height <= 10){
             this.elem.childNodes[0].className = className;
         }
