@@ -12,8 +12,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href='css/styles.css' type='text/css' rel='stylesheet'>
     <title>2048</title>
+    <div class="padding" id="initial-board">
+      <h1>2048</h1>
+      <h2 class="padding">Instructions</h2>
+      <h4>Using the arrow keys, combine like tiles to increase their value</h4>
+      <h4>Reach 2048 in order to win the game!</h4>
+      <button id="start" class="waves-effect waves-light btn">Play Game!</button>
+    </div>
     <div id="size-changer" class='container'>
-      <input type="text" id="new-size" placeholder="4"><button class="waves-effect waves-light btn" id="change-size">Change Size</button>
+      <input type="text" id="new-size" value="4"><button class="waves-effect waves-light btn" id="change-size">Change Size</button>
     </div>
     </div>
     <div id="score-holder" class ='container'>

@@ -1,5 +1,5 @@
 function init (){
-    // generate table and add it to DOM
+    // Generate table and add it to DOM
     for(let i = 0; i < GRID_SIZE; i++){
         let row = document.createElement('tr');
         row.id = 'row-' + i;
@@ -17,12 +17,11 @@ function init (){
         $('#table').append(row);
         table.push(rowjs);
     }
-    // Set event listeners
-    setListeners();
     // Add two random tiles
     addTile();
     addTile();
 
+    // Initializes first high score
 	if(!localStorage.score){
 		localStorage.score = 0;
 	}
@@ -38,25 +37,24 @@ function init (){
         init();
     });
 
-    // Mobile listeners
-    $('body').on('swipeleft',function(){
-        leftMove();
-    });
-    $('body').on('swiperight',function(){
-        rightMove();
-    });
-    $('body').on('swipeup',function(){
-        upMove();
-    });
-    $('body').on('swipedown',function(){
-        downMove();
-    });
     // Disables jQuery mobile loading message
 	$( document ).on( "mobileinit", function() {
         $.mobile.loadingMessage = false;
 		$.mobile.hidePageLoadingMsg();
 	});
 
+    // Initial state
+    $('#tableElement').hide();
+    $('#score-holder').hide();
+    $('#start').on('click',function(){
+        // Set event listeners
+        setListeners();
+        $('#initial-board').fadeOut(FADE_SPEED,function(){
+            $('#score-holder').show();
+            $('#tableElement').fadeIn(FADE_SPEED);
+        });
+    });
+    
     // End game messaging
     $('#message-div').hide();
     $('#keep-playing').hide();
@@ -66,7 +64,6 @@ function init (){
         }); 
         setListeners();
     }); 
-
 }
 function lose(){
     sendMessage('You lose!');
@@ -87,6 +84,7 @@ function sendMessage(message){
     });
 }
 function setListeners(){
+    // Arrow key listeners
     document.onkeydown = function(e) {
 		switch (e.keyCode) {
 			case 37:
@@ -107,6 +105,19 @@ function setListeners(){
 				break;
 		}
 	};
+    // Mobile listeners
+    $('body').on('swipeleft',function(){
+        leftMove();
+    });
+    $('body').on('swiperight',function(){
+        rightMove();
+    });
+    $('body').on('swipeup',function(){
+        upMove();
+    });
+    $('body').on('swipedown',function(){
+        downMove();
+    });
 }
 $(document).ready(function(){
     init();

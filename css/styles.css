@@ -34,6 +34,6 @@ table {
 	background-color: grey;
 	border-radius: 8px;
 }
-.ui-loader {
-	display: none;
+.padding {
+    padding-bottom: 30px;
 }
