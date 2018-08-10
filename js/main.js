@@ -2,6 +2,18 @@ function init (){
     // Initializes table state
     initTable();
 
+    // Initial state
+    $('#tableElement').hide();
+    $('#score-holder').hide();
+    $('#start').on('click',function(){
+        // Set event listeners
+        setListeners();
+        $('#initial-board').fadeOut(FADE_SPEED,function(){
+            $('#score-holder').show();
+            $('#tableElement').fadeIn(FADE_SPEED);
+        });
+    });
+    
     // Initializes first high score
 	if(!localStorage.score){
 		localStorage.score = 0;
@@ -21,19 +33,16 @@ function init (){
         initTable();
     });
 
-
-    // Initial state
-    $('#tableElement').hide();
-    $('#score-holder').hide();
-    $('#start').on('click',function(){
-        // Set event listeners
+    // Add listener to play again
+    $('#again').on('click',function (){
+        $('#score').text('0');
+        clearTable();
+        initTable();
+        $('#message-div').hide();
         setListeners();
-        $('#initial-board').fadeOut(FADE_SPEED,function(){
-            $('#score-holder').show();
-            $('#tableElement').fadeIn(FADE_SPEED);
-        });
+        $('#table').fadeIn(FADE_SPEED);
     });
-    
+
     // End game messaging
     $('#message-div').hide();
     $('#keep-playing').hide();
@@ -72,14 +81,17 @@ function initTable(){
     addTile();
 }
 function lose(){
-    sendMessage('You lose!');
     $('#keep-playing').hide();
+    $('#play-again').show();
+    sendMessage('You lose!');
     document.onkeydown = null;
 }
 function winGame(){
     sendMessage('You win!');
+    $('#play-again').hide();
+    $('#keep-playing').show();
     setTimeout(function () {
-        $('#keep-playing').fadeIn(200);
+    $('#keep-playing').fadeIn(200);
     },FADE_SPEED * 2);
     document.onkeydown = null;
 }
