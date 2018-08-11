@@ -188,7 +188,12 @@ function saveTable(){
     localTable = [];
     for(var i = 0; i < GRID_SIZE; i++){
         for(var j = 0; j < GRID_SIZE; j++){
-            localTable.push(table[i][j].value);
+            if(table[i][j].value == null){
+                localTable.push(0);
+            }
+            else {
+                localTable.push(table[i][j].value);
+            }
         }
     }   
     localStorage.setItem('table',localTable);
@@ -200,23 +205,33 @@ function showTable(){
 }
 function loadTable(){
     clearTable();
-    localTable = localStorage.getItem('table');
-    console.log(localTable.length);
-    for(let i = 0; i < localTable.length; i++){
+    localTable = localStorage.getItem('table').split(',');
+    var GRID_SIZE = Math.sqrt(localTable.length);
+    var index = 0;
+    console.log(localTable);
+    for(let i = 0; i < GRID_SIZE; i++){
         let row = document.createElement('tr');
         row.id = 'row-' + i;
         let rowjs = [];
-        for(let j = 0; j < localTable.length; j++){
+        for(let j = 0; j < GRID_SIZE; j++,index++){
             let newTile = document.createElement('td');
             let newDiv = document.createElement('div');
             newDiv.className = "tile";
             newTile.appendChild(newDiv);
-            let tile = new Tile(newTile,localTable[i][j],[i,j]);
+            let tile = new Tile(newTile,localTable[index],[i,j]);
             newDiv.id = i + ',' + j;
             rowjs.push(tile);
             row.append(newTile);
         }
         $('#table').append(row);
         table.push(rowjs);
+    }
+    updateTable();
+}
+function updateTable(){
+    for(var i = 0; i < GRID_SIZE; i++){
+        for(var j = 0; j < GRID_SIZE; j++){
+            table[i][j].setValue(table[i][j].value);
+        }
     }
 }
