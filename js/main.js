@@ -15,11 +15,17 @@ function init (){
             $('#new-game').show();
         });
     });
+    // New Game
+    $('#new-game').on('click',function () {
+        clearTable();
+        initTable();
+    });
     
     // Initializes first high score
 	if(!localStorage.score){
 		localStorage.score = 0;
 	}
+
 
     // Pulls high score from localStorage
     $('#high-score').text(localStorage.score);
