@@ -1,16 +1,18 @@
 function init (){
     // Initializes table state
-    initTable();
+    loadTable();
 
     // Initial state
     $('#tableElement').hide();
     $('#score-holder').hide();
+    $('#new-game').hide();
     $('#start').on('click',function(){
         // Set event listeners
         setListeners();
         $('#initial-board').fadeOut(FADE_SPEED,function(){
             $('#score-holder').show();
             $('#tableElement').fadeIn(FADE_SPEED);
+            $('#new-game').show();
         });
     });
     
@@ -79,6 +81,7 @@ function initTable(){
     // Add two random tiles
     addTile();
     addTile();
+    saveTable();    
 }
 function lose(){
     $('#keep-playing').hide();

@@ -218,7 +218,13 @@ function loadTable(){
             let newDiv = document.createElement('div');
             newDiv.className = "tile";
             newTile.appendChild(newDiv);
-            let tile = new Tile(newTile,localTable[index],[i,j]);
+            var tile;
+            if(localTable[index] != 0){
+                tile = new Tile(newTile,localTable[index],[i,j]);
+            }
+            else {
+                tile = new Tile(newTile,null,[i,j]);
+            }
             newDiv.id = i + ',' + j;
             rowjs.push(tile);
             row.append(newTile);
