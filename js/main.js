@@ -4,7 +4,7 @@ function init (){
 		localStorage.setItem('score','0');
 	}
     if(!localStorage.table){
-        localStorage.setItem('table','');
+        initTable();
     }
 
     // Initializes table state
