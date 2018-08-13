@@ -95,7 +95,7 @@ function lose(){
     $('#play-again').show();
     $('#new-game').hide();
     sendMessage('You lose!');
-    document.onkeydown = null;
+    removeListeners();
 }
 function winGame(){
     sendMessage('You win!');
@@ -104,7 +104,7 @@ function winGame(){
     setTimeout(function () {
     $('#keep-playing').fadeIn(200);
     },FADE_SPEED * 2);
-    document.onkeydown = null;
+    removeListeners();
 }
 function sendMessage(message){
     $('#table').fadeOut(FADE_SPEED,function(){
@@ -145,6 +145,23 @@ function setListeners(){
         upMove();
     });
     $('body').on('swipedown',function(){
+        downMove();
+    });
+}
+
+function removeListeners() {
+    document.onkeydown = null;
+    // Mobile listeners
+    $('body').off('swipeleft',function(){
+        leftMove();
+    });
+    $('body').off('swiperight',function(){
+        rightMove();
+    });
+    $('body').off('swipeup',function(){
+        upMove();
+    });
+    $('body').off('swipedown',function(){
         downMove();
     });
 }
