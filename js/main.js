@@ -96,6 +96,8 @@ function lose(){
     $('#play-again').show();
     $('#new-game').hide();
     sendMessage('You lose!');
+    clearTable();
+    initTable();
     removeListeners();
 }
 function winGame(){
