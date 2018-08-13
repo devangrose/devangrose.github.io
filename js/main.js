@@ -1,4 +1,12 @@
 function init (){
+    // Initializes first high score
+	if(!localStorage.score){
+		localStorage.setItem('score','0');
+	}
+    if(!localStorage.table){
+        localStorage.setItem('table','');
+    }
+
     // Initializes table state
     loadTable();
 
@@ -21,10 +29,6 @@ function init (){
         initTable();
     });
     
-    // Initializes first high score
-	if(!localStorage.score){
-		localStorage.score = 0;
-	}
 
 
     // Pulls high score from localStorage
