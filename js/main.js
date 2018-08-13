@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    init();
+});
+
 function init (){
     // Initializes first high score
 	if(!localStorage.score){
@@ -69,8 +73,8 @@ function init (){
 
     // Disables jQuery mobile loading message
     $(".ui-loader").hide();
-
 }
+
 function initTable(){
     // Generate table and add it to DOM
     for(let i = 0; i < GRID_SIZE; i++){
@@ -95,6 +99,7 @@ function initTable(){
     addTile();
     saveTable();    
 }
+
 function lose(){
     $('#keep-playing').hide();
     $('#play-again').show();
@@ -104,6 +109,7 @@ function lose(){
     initTable();
     removeListeners();
 }
+
 function winGame(){
     sendMessage('You win!');
     $('#play-again').hide();
@@ -114,12 +120,14 @@ function winGame(){
     },FADE_SPEED * 2);
     removeListeners();
 }
+
 function sendMessage(message){
     $('#table').fadeOut(FADE_SPEED,function(){
         $('#message').text(message);
         $('#message-div').fadeIn(200);
     });
 }
+
 function setListeners(){
     // Arrow key listeners
     document.onkeydown = function(e) {
@@ -173,6 +181,3 @@ function removeListeners() {
         downMove();
     });
 }
-$(document).ready(function(){
-    init();
-});
