@@ -58,6 +58,7 @@ function init (){
     $('#continue').on('click',function () {
         $('#message-div').fadeOut(FADE_SPEED,function(){
             $('#table').show();
+            $('#new-game').show();
         }); 
         setListeners();
     }); 
@@ -101,6 +102,7 @@ function winGame(){
     sendMessage('You win!');
     $('#play-again').hide();
     $('#keep-playing').show();
+    $('#new-game').hide();
     setTimeout(function () {
     $('#keep-playing').fadeIn(200);
     },FADE_SPEED * 2);

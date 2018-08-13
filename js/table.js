@@ -212,7 +212,6 @@ function loadTable(){
     localTable = localStorage.getItem('table').split(',');
     var GRID_SIZE = Math.sqrt(localTable.length);
     var index = 0;
-    console.log(localTable);
     for(let i = 0; i < GRID_SIZE; i++){
         let row = document.createElement('tr');
         row.id = 'row-' + i;
