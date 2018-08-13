@@ -32,7 +32,6 @@ function newTile (tile, value) {
     tile.value = value;
     tile.elem.childNodes[0].innerHTML=value;
     tile.height = value / 2;
-    
 }
 
 function leftMove () {
@@ -82,6 +81,7 @@ function downMove () {
     }
     postMove(rows);
 }
+
 function postMove(rows){
     // Prevents adding new tile if board hasn't changed
     if(slide(rows)){
@@ -139,9 +139,11 @@ function setTile(coord, value){
 function checkForEndGame(){
    for(let i = 0; i < GRID_SIZE; i++){
         for(let j = 0; j < GRID_SIZE; j++){
+            // If it finds an empty tile returns false
             if(table[i][j].value == null){
                 return false;
             }
+            // Checks for similar adjacent tiles
             let neighbors = getNeighbors(table[i][j].coordinate);
             for(let k = 0; k < neighbors.length; k++){
                 if(neighbors[k].value == table[i][j].value)
@@ -152,6 +154,7 @@ function checkForEndGame(){
     return true;
 }
 
+// Gets adjacent tiles
 function getNeighbors(coord){
     let toReturn = [];
     if(coord[0] >= 1){
@@ -169,6 +172,7 @@ function getNeighbors(coord){
     return toReturn;
 }
 
+// Increments score and updates DOM as well as local storage
 function updateScore(val){
     var score = $('#score').text();
     score = parseInt(score);
@@ -180,10 +184,13 @@ function updateScore(val){
     }
 }
 
+// Resets table and DOM
 function clearTable(){
     table = [];
     $('tr').remove();
 }
+
+// Saves the table to local storage
 function saveTable(){
     localTable = [];
     for(var i = 0; i < GRID_SIZE; i++){
@@ -198,11 +205,8 @@ function saveTable(){
     }   
     localStorage.setItem('table',localTable);
 }
-function showTable(){
-    for(var i = 0; i < localStorage.table.length; i++){
-        console.log(localStorage.table[i]);
-    }
-}
+
+// Loads the table from local storage
 function loadTable(){
     clearTable();
     localTable = localStorage.getItem('table').split(',');
@@ -219,6 +223,7 @@ function loadTable(){
             newDiv.className = "tile";
             newTile.appendChild(newDiv);
             var tile;
+            // Null case
             if(localTable[index] != 0){
                 tile = new Tile(newTile,localTable[index],[i,j]);
             }
@@ -231,13 +236,5 @@ function loadTable(){
         }
         $('#table').append(row);
         table.push(rowjs);
-    }
-    updateTable();
-}
-function updateTable(){
-    for(var i = 0; i < GRID_SIZE; i++){
-        for(var j = 0; j < GRID_SIZE; j++){
-            table[i][j].setValue(table[i][j].value);
-        }
     }
 }

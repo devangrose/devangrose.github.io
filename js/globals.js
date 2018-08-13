@@ -27,6 +27,7 @@ class Tile {
         this.elem = element;
         this.coordinate = coordinate;
         this.height = 0;
+        this.setValue(value);
     }
 	// Doubles the value of the Tile 
     incrementValue () {

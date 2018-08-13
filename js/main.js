@@ -49,6 +49,7 @@ function init (){
         $('#message-div').hide();
         setListeners();
         $('#table').fadeIn(FADE_SPEED);
+        $('#new-game').show();
     });
 
     // End game messaging
@@ -92,6 +93,7 @@ function initTable(){
 function lose(){
     $('#keep-playing').hide();
     $('#play-again').show();
+    $('#new-game').hide();
     sendMessage('You lose!');
     document.onkeydown = null;
 }
